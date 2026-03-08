@@ -27,22 +27,16 @@ modules:
         - firefox
         - firefox-langpacks
 
-  # 3. Hatter icons
+  # 3. Scripts
   - type: script
     scripts:
-        - install-hatter-icons.sh
-
-  # 4. Habilita Flathub
-  - type: script
-    scripts:
+      - install-hatter-icons.sh
       - add-flathub.sh
-        
-  # 5. Remove repositório Fedora Flatpak
-  - type: script
-    scripts:
       - remove-fedora-flatpaks.sh
-       
-  # 6. Flatpaks instalados automaticamente
+      - install-rom.sh
+      - disable-network-wait.sh
+
+  # 4. Install Flathub Flatpaks
   - type: default-flatpaks
     configurations:
       - notify: true
@@ -74,15 +68,5 @@ modules:
           - org.localsend.localsend_app
           - page.tesk.Refine
           - page.codeberg.libre_menu_editor.LibreMenuEditor
-
-  # 7. RPM-OSTree Manager
-  - type: script
-    scripts:
-      - install-rom.sh
-        
-  # 8. Desativa espera de rede no boot
-  - type: script
-    scripts:
-      - disable-network-wait.sh
         
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
