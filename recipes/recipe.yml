@@ -13,7 +13,7 @@ modules:
   # 1. Fonts Office
   - type: files
     files:
-      - source: files/office_fontes
+      - source: office_fontes
         destination: /usr/share/fonts/office_fontes
 
   - type: script
