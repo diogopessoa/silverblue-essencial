@@ -18,7 +18,7 @@ modules:
 
   - type: script
     scripts:
-      - fc-cache -f /usr/local/share/fonts
+      - fc-cache -fv
 
   # 2. RPM packages
   - type: dnf
