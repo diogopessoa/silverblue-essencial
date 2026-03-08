@@ -50,8 +50,12 @@ modules:
         rm -rf /tmp/Hatter
 
   # 4. Habilita Flathub
-  - type: flathub
-
+  - type: script
+    scripts:
+      - |
+        flatpak remote-add --if-not-exists flathub \
+        https://flathub.org/repo/flathub.flatpakrepo
+        
   # 5. Remove repositório Fedora Flatpak
   - type: script
     scripts:
