@@ -1,4 +1,3 @@
----
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 # image will be published to ghcr.io/<user>/<name>
 name: silverblue-essencial
@@ -9,23 +8,17 @@ description: This is my personal OS image.
 base-image: ghcr.io/ublue-os/silverblue-main
 image-version: latest # latest is also supported if you want new updates ASAP
 
-# module configuration, executed in order
-# you can include multiple instances of the same module
-# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-
 modules:
 
   # 1. Fonts Office
   - type: files
     files:
-      - source: ../files/office_fonts.zip
-        destination: /usr/local/share/fonts/office_fonts/office_fonts.zip
+      - source: files/office_fontes
+        destination: /usr/local/share/fonts/office
 
   - type: script
     scripts:
-      - |
-        unzip /usr/local/share/fonts/office_fonts/office_fonts.zip -d /usr/local/share/fonts/office_fonts/
-        fc-cache -f /usr/local/share/fonts/office_fonts/
+      - fc-cache -f /usr/local/share/fonts
 
   # 2. RPM packages
   - type: dnf
@@ -53,7 +46,7 @@ modules:
   - type: script
     scripts:
       - |
-        flatpak remote-add --if-not-exists flathub \
+        flatpak remote-add --if-not-exists --system flathub \
         https://flathub.org/repo/flathub.flatpakrepo
         
   # 5. Remove repositório Fedora Flatpak
