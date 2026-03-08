@@ -40,9 +40,8 @@ modules:
   # 5. Remove repositório Fedora Flatpak
   - type: script
     scripts:
-      - |
-        flatpak remote-delete fedora || true
-
+      - remove-fedora-remote.sh
+       
   # 6. Flatpaks instalados automaticamente
   - type: default-flatpaks
     configurations:
