@@ -16,10 +16,6 @@ modules:
       - source: office_fontes
         destination: /usr/share/fonts/office_fontes
 
-  - type: script
-    scripts:
-      - fc-cache -fv
-
   # 2. RPM packages
   - type: dnf
     install:
