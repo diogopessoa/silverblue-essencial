@@ -11,14 +11,23 @@ image-version: latest # latest is also supported if you want new updates ASAP
 modules:
 
   # 1. Fonts Office
-  - type: files
-    files:
-      - source: files/office_fontes
-        destination: /usr/local/share/fonts/office
+- type: script
+  scripts:
+    - |
+      mkdir -p /usr/share/fonts/msttcore
+      cd /tmp
 
-  - type: script
-    scripts:
-      - fc-cache -fv
+      curl -LO https://downloads.sourceforge.net/corefonts/arial32.exe
+      curl -LO https://downloads.sourceforge.net/corefonts/times32.exe
+      curl -LO https://downloads.sourceforge.net/corefonts/verdana32.exe
+      curl -LO https://downloads.sourceforge.net/corefonts/trebuc32.exe
+      curl -LO https://downloads.sourceforge.net/corefonts/georgi32.exe
+      curl -LO https://downloads.sourceforge.net/corefonts/webdin32.exe
+
+      cabextract *.exe -d /usr/share/fonts/msttcore
+
+      fc-cache -fv
+    
 
   # 2. RPM packages
   - type: dnf
