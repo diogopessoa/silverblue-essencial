@@ -7,39 +7,100 @@ description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
 base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 42 # latest is also supported if you want new updates ASAP
+image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+
 modules:
+
+  # 1. Fonts Office
   - type: files
     files:
-      - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+      - source: ../files/office_fonts.zip
+        destination: /usr/local/share/fonts/office_fonts/office_fonts.zip
 
+  - type: script
+    scripts:
+      - |
+        unzip /usr/local/share/fonts/office_fonts/office_fonts.zip -d /usr/local/share/fonts/office_fonts/
+        fc-cache -f /usr/local/share/fonts/office_fonts/
+
+  # 2. RPM packages
   - type: dnf
-    repos:
-      copr:
-        - atim/starship
     install:
       packages:
-        - micro
-        - starship
+        - distrobox
+        - adw-gtk3-theme
     remove:
       packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
         - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+        - firefox-langpacks
 
+  # 3. Hatter icons
+  - type: script
+    scripts:
+      - |
+        git clone --depth 1 https://github.com/Mibea/Hatter.git /tmp/Hatter
+        cp -r /tmp/Hatter/Hatter /usr/local/share/icons/
+        gtk-update-icon-cache /usr/local/share/icons/Hatter
+        mkdir -p /etc/skel/.config/gtk-3.0
+        echo 'gtk-icon-theme-name=Hatter' > /etc/skel/.config/gtk-3.0/settings.ini
+        rm -rf /tmp/Hatter
+
+  # 4. Habilita Flathub
+  - type: flathub
+
+  # 5. Remove repositório Fedora Flatpak
+  - type: script
+    scripts:
+      - |
+        flatpak remote-delete fedora || true
+
+  # 6. Flatpaks instalados automaticamente
   - type: default-flatpaks
     configurations:
-      - notify: true # Send notification after install/uninstall is finished (true/false)
+      - notify: true
         scope: system
-        # If no repo information is specified, Flathub will be used by default
-        install: # system flatpaks we want all users to have and not remove
-          - org.mozilla.firefox
+        install:
+          - org.gnome.baobab
+          - org.gnome.Calculator
+          - org.gnome.Calendar
+          - org.gnome.clocks
+          - org.gnome.Contacts
+          - org.gnome.Connections
+          - org.fedoraproject.MediaWriter
+          - org.gnome.font-viewer
+          - org.gnome.FileRoller
           - org.gnome.Loupe
-      - scope: user # Also add Flathub user repo, but no user packages
+          - org.gnome.Papers
+          - org.gnome.SimpleScan
+          - org.gnome.Snapshot
+          - org.gnome.Showtime
+          - org.gnome.TextEditor
+          - org.onlyoffice.desktopeditors
+          - it.mijorus.smile
+          - io.github.flattool.Ignition
+          - io.github.thetumultuousunicornofdarkness.cpu-x
+          - io.missioncenter.MissionCenter
+          - com.github.neithern.g4music
+          - com.mattjakeman.ExtensionManager
+          - com.brave.Browser
+          - org.localsend.localsend_app
+          - page.tesk.Refine
+          - page.codeberg.libre_menu_editor.LibreMenuEditor
+
+  # 7. RPM-OSTree Manager
+  - type: script
+    scripts:
+      - |
+        curl -fsSL https://raw.githubusercontent.com/diogopessoa/rpm-ostree-manager/main/install.sh | bash
+
+  # 8. Desativa espera de rede no boot
+  - type: script
+    scripts:
+      - |
+        systemctl disable NetworkManager-wait-online.service
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
