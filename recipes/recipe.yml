@@ -78,13 +78,11 @@ modules:
   # 7. RPM-OSTree Manager
   - type: script
     scripts:
-      - |
-        curl -fsSL https://raw.githubusercontent.com/diogopessoa/rpm-ostree-manager/main/install.sh | bash
-
+      - install-rom.sh
+        
   # 8. Desativa espera de rede no boot
   - type: script
     scripts:
-      - |
-        systemctl disable NetworkManager-wait-online.service
-
+      - disable-network-wait.sh
+        
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
