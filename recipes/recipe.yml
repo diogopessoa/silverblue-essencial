@@ -30,13 +30,7 @@ modules:
   # 3. Hatter icons
   - type: script
     scripts:
-      - |
-        git clone --depth 1 https://github.com/Mibea/Hatter.git /tmp/Hatter
-        cp -r /tmp/Hatter/Hatter /usr/local/share/icons/
-        gtk-update-icon-cache /usr/local/share/icons/Hatter
-        mkdir -p /etc/skel/.config/gtk-3.0
-        echo 'gtk-icon-theme-name=Hatter' > /etc/skel/.config/gtk-3.0/settings.ini
-        rm -rf /tmp/Hatter
+        - install-hatter-icons.sh
 
   # 4. Habilita Flathub
   - type: script
