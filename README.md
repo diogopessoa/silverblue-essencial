@@ -1,5 +1,7 @@
 # silverblue-essencial &nbsp; [![bluebuild build badge](https://github.com/diogopessoa/silverblue-essencial/actions/workflows/build.yml/badge.svg)](https://github.com/diogopessoa/silverblue-essencial/actions/workflows/build.yml)
 
+Silverblue-essential is a Fedora Silverblue image with essential apps/flatpaks from **Flathub**, **Office fonts**, a unique **Hatter icon theme** faithful to the application's identity and color scheme, and **RPM-OSTree Manager** - a CLI program for managing RPM, rollback, and deployment via rpm-ostree.
+
 See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.
 
 After setup, it is recommended you update this README to describe your custom image.
@@ -41,3 +43,6 @@ These images are signed with [Sigstore](https://www.sigstore.dev/)'s [cosign](ht
 ```bash
 cosign verify --key cosign.pub ghcr.io/diogopessoa/silverblue-essencial
 ```
+## Script Fedora Silverblue Post-Install  (alternative)
+
+This [Script](https://gist.github.com/diogopessoa/d66ec201068ac799da7a25f996be5cfe) is an alternative for installing essential applications and making adjustments after completing the standard Fedora Silverblue installation.
