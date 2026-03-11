@@ -39,7 +39,7 @@ modules:
   # 4. Install Flathub Flatpaks
   - type: default-flatpaks
     configurations:
-      - notify: true
+      - notify: false
         scope: system
         install:
           - org.gnome.baobab
