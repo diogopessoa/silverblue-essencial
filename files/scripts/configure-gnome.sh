@@ -17,15 +17,7 @@ button-layout='appmenu:minimize,maximize,close'
 
 # Dock / favorites apps
 [org/gnome/shell]
-favorite-apps=[
-'org.gnome.Nautilus.desktop',
-'org.gnome.Settings',
-'org.gnome.Software',
-'org.gnome.TextEditor.desktop',
-'org.gnome.Calculator.desktop',
-'org.onlyoffice.desktopeditors.desktop',
-'com.brave.Browser.desktop'
-]
+favorite-apps=['org.gnome.Nautilus.desktop','org.gnome.Settings.desktop','org.gnome.Software.desktop','org.gnome.TextEditor.desktop','org.gnome.Calculator.desktop','org.onlyoffice.desktopeditors.desktop','com.brave.Browser.desktop']
 
 EOF
 
