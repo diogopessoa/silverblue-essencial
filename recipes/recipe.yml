@@ -31,6 +31,7 @@ modules:
   - type: script
     scripts:
       - install-hatter-icons.sh
+      - configure-gnome.sh
       - add-flathub.sh
       - remove-fedora-flatpaks.sh
       - install-rom.sh
