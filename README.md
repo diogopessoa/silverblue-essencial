@@ -1,4 +1,4 @@
-# silverblue-essencial   [![bluebuild build badge](https://github.com/diogopessoa/silverblue-essencial/actions/workflows/build.yml/badge.svg)](https://github.com/diogopessoa/silverblue-essencial/actions/workflows/build.yml)
+# silverblue-essencial  [![Fedora Atomic](https://img.shields.io/badge/Fedora-Atomic-blue?logo=fedora&logoColor=white)](https://fedoraproject.org/) [![bluebuild build badge](https://github.com/diogopessoa/silverblue-essencial/actions/workflows/build.yml/badge.svg)](https://github.com/diogopessoa/silverblue-essencial/actions/workflows/build.yml)
 
 Silverblue-essential is a Fedora Silverblue image with essential apps/flatpaks from **Flathub**, **Office fonts**, a unique **Hatter icon theme** faithful to the application's identity and color scheme, and **RPM-OSTree Manager** — a CLI program for managing RPM packages, rollbacks, and deployments via `rpm-ostree`.
 
@@ -37,7 +37,7 @@ The `latest` tag always points to the newest build while still using the Fedora 
 
 ## ISO available for download
 
-The link to the pre-compiled ISO image is in [Releases](https://github.com/diogopessoa/silverblue-essencial/releases). It cannot be distributed directly on GitHub due to its size (4.8 GB).
+The link to the pre-compiled ISO image is in [Releases](https://github.com/diogopessoa/silverblue-essencial/releases). It cannot be distributed directly on GitHub due to its size.
 
 ## Generate the ISO with BlueBuild
 
