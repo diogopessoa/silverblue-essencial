@@ -44,12 +44,14 @@ modules:
       - notify: false
         scope: system
         install:
+          - com.mattjakeman.ExtensionManager
+          - com.brave.Browser
+          - com.github.neithern.g4music
           - org.gnome.baobab
           - org.gnome.Calculator
           - org.gnome.Calendar
           - org.gnome.clocks
           - org.gnome.Contacts
-          - org.gnome.Connections
           - org.fedoraproject.MediaWriter
           - org.gnome.font-viewer
           - org.gnome.FileRoller
@@ -64,9 +66,6 @@ modules:
           - io.github.flattool.Ignition
           - io.github.thetumultuousunicornofdarkness.cpu-x
           - io.missioncenter.MissionCenter
-          - com.github.neithern.g4music
-          - com.mattjakeman.ExtensionManager
-          - com.brave.Browser
           - org.localsend.localsend_app
           - page.tesk.Refine
           - page.codeberg.libre_menu_editor.LibreMenuEditor
