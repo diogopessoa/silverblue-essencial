@@ -21,7 +21,9 @@ modules:
     install:
       packages:
         - distrobox
+        - fish
         - adw-gtk3-theme
+        
     remove:
       packages:
         - firefox
@@ -69,5 +71,8 @@ modules:
           - org.localsend.localsend_app
           - page.tesk.Refine
           - page.codeberg.libre_menu_editor.LibreMenuEditor
+          - org.gtk.Gtk3theme.adw-gtk3 
+          - org.gtk.Gtk3theme.adw-gtk3-dark
+          
         
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
