@@ -11,10 +11,6 @@ icon-theme='Hatter'
 clock-show-weekday=true
 enable-hot-corners=false
 
-# Windows
-[org/gnome/desktop/wm/preferences]
-button-layout='appmenu:minimize,maximize,close'
-
 # Dock / favorites apps
 [org/gnome/shell]
 favorite-apps=['org.gnome.Nautilus.desktop','org.gnome.Settings.desktop','org.gnome.Software.desktop','org.gnome.TextEditor.desktop','org.gnome.Calculator.desktop','org.onlyoffice.desktopeditors.desktop','com.brave.Browser.desktop']
