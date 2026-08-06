@@ -8,7 +8,6 @@ cat > /etc/dconf/db/local.d/00-gnome-defaults << 'EOF'
 # Interface
 [org/gnome/desktop/interface]
 icon-theme='Hatter'
-clock-show-weekday=true
 enable-hot-corners=false
 
 # Dock / favorites apps
